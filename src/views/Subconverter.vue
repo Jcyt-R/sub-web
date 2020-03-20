@@ -209,14 +209,12 @@
 </template>
 
 <script>
-const project = "https://github.com/AGWA5783/sub-web";
 const remoteConfigSample =
   "https://raw.githubusercontent.com/tindy2013/subconverter/master/base/config/example_external_config.ini";
 const gayhubRelease = "https://github.com/tindy2013/subconverter/releases";
-const defaultBackend = "https://sub.agwa.page/sub?";
-const shortUrlBackend = "https://url.i2.yt/short";
+const defaultBackend = "https://api.ytoo-163cdn.com/sub?";
+const shortUrlBackend = "https://dlj.tf/short";
 const configUploadBackend = "https://api.wcc.best/config/upload";
-const tgBotLink = "https://t.me/AGWA5783";
 
 export default {
   data() {
