@@ -214,7 +214,7 @@ const remoteConfigSample =
   "https://raw.githubusercontent.com/tindy2013/subconverter/master/base/config/example_external_config.ini";
 const gayhubRelease = "https://github.com/tindy2013/subconverter/releases";
 const defaultBackend = "https://api.ytoo-163cdn.com/sub?";
-const shortUrlBackend = "https://api.suo.yt/short";
+const shortUrlBackend = "https://suo.yt/short";
 const configUploadBackend = "https://api.wcc.best/config/upload";
 const tgBotLink = "https://t.me/CareyWong_bot";
 
@@ -222,7 +222,7 @@ export default {
   data() {
     return {
       backendVersion: '',
-      advanced: "2",
+      advanced: "1",
 
       options: {
         clientTypes: {
