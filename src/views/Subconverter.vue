@@ -6,8 +6,6 @@
           <div slot="header">
             Subscription Converter
             <svg-icon icon-class="github" style="margin-left: 20px" @click="goToProject" />
-
-            <div style="display: inline-block; position:absolute; right: 20px">{{ backendVersion }}</div>
           </div>
           <el-container>
             <el-form :model="form" label-width="120px" label-position="left" style="width: 100%">
@@ -213,7 +211,7 @@ const project = "https://github.com/CareyWang/sub-web";
 const remoteConfigSample =
   "https://raw.githubusercontent.com/tindy2013/subconverter/master/base/config/example_external_config.ini";
 const gayhubRelease = "https://github.com/tindy2013/subconverter/releases";
-const defaultBackend = "https://api.wcc.best/sub?";
+const defaultBackend = "https://api.ytoo-163cdn.com/sub?";
 const shortUrlBackend = "https://api.suo.yt/short";
 const configUploadBackend = "https://api.wcc.best/config/upload";
 const tgBotLink = "https://t.me/CareyWong_bot";
@@ -221,8 +219,7 @@ const tgBotLink = "https://t.me/CareyWong_bot";
 export default {
   data() {
     return {
-      backendVersion: '',
-      advanced: "2",
+      advanced: "1",
 
       options: {
         clientTypes: {
@@ -275,14 +272,9 @@ export default {
                   "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/yoyu.ini"
               },
               {
-                label: "Ytoo",
+                label: "YToo",
                 value:
                   "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/ytoo.ini"
-              },
-              {
-                label: "NyanCAT",
-                value:
-                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/nyancat.ini"
               },
               {
                 label: "贼船",
@@ -337,9 +329,7 @@ export default {
     document.title = "Subscription Converter";
   },
   mounted() {
-    this.form.clientType = "clashr";
-    this.notify();
-    this.getBackendVersion();
+    this.form.clientType = "clash";
   },
   methods: {
     onCopy() {
@@ -537,11 +527,6 @@ export default {
           candidate.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
         );
       };
-    },
-    getBackendVersion() {
-      this.$axios.get(defaultBackend.substring(0, defaultBackend.length - 5) + '/version').then(res => {
-        this.backendVersion = res.data.replace(/\n$/gm, '');
-      })
     }
   }
 };
