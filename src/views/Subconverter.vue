@@ -222,7 +222,7 @@ export default {
   data() {
     return {
       backendVersion: '',
-      advanced: "1",
+      advanced: "2",
 
       options: {
         clientTypes: {
