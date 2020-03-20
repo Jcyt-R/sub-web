@@ -35,7 +35,7 @@
                     style="width: 100%"
                     v-model="form.customBackend"
                     :fetch-suggestions="backendSearch"
-                    placeholder="动动小手，（建议）自行搭建后端服务。例：https://sub.agwa.page/sub?"
+                    placeholder="动动小手，（建议）自行搭建后端服务。例：http://127.0.0.1:25500/sub?"
                   >
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">前往项目仓库</el-button>
                   </el-autocomplete>
@@ -209,18 +209,20 @@
 </template>
 
 <script>
+const project = "https://github.com/CareyWang/sub-web";
 const remoteConfigSample =
   "https://raw.githubusercontent.com/tindy2013/subconverter/master/base/config/example_external_config.ini";
 const gayhubRelease = "https://github.com/tindy2013/subconverter/releases";
 const defaultBackend = "https://api.ytoo-163cdn.com/sub?";
 const shortUrlBackend = "https://dlj.tf/short";
 const configUploadBackend = "https://api.wcc.best/config/upload";
+const tgBotLink = "https://t.me/CareyWong_bot";
 
 export default {
   data() {
     return {
       backendVersion: '',
-      advanced: "1",
+      advanced: "2",
 
       options: {
         clientTypes: {
@@ -229,58 +231,63 @@ export default {
           Surge2: "surge&ver=2",
           Surge3: "surge&ver=3",
           Surge4: "surge&ver=4",
-          Loon: "loon",
           Quantumult: "quan",
           QuantumultX: "quanx",
           Surfboard: "surfboard",
-          SS: "ss",
-          SSR: "ssr",
-          SSD: "ssd"
+          Loon: "loon",
+          ss: "ss",
+          ssr: "ssr",
+          ssd: "ssd"
         },
-        backendOptions: [{ value: "https://sub.agwa.page/sub?" }],
+        backendOptions: [{ value: "http://127.0.0.1:25500/sub?" }],
         remoteConfig: [
           {
-            label: "Universal",
+            label: "universal",
             options: [
               {
                 label: "No-Urltest",
                 value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/universal/no-urltest.ini"
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/universal/no-urltest.ini"
               },
               {
                 label: "Urltest",
                 value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/universal/urltest.ini"
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/universal/urltest.ini"
               }
             ]
           },
           {
-            label: "Customized",
+            label: "customized",
             options: [
-              {
-                label: "rixCloud",
-                value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/customized/rixcloud.ini"
-              },
               {
                 label: "Maying",
                 value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/customized/maying.ini"
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/maying.ini"
               },
               {
                 label: "Nexitally",
                 value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/customized/nexitally.ini"
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/nexitally.ini"
               },
               {
-                label: "YToo",
+                label: "YoYu",
                 value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/customized/ytoo.ini"
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/yoyu.ini"
               },
               {
-                label: "便利店",
+                label: "Ytoo",
                 value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/customized/convenience.ini"
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/ytoo.ini"
+              },
+              {
+                label: "NyanCAT",
+                value:
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/nyancat.ini"
+              },
+              {
+                label: "贼船",
+                value:
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/customized/zeichuan.ini"
               }
             ]
           },
@@ -290,7 +297,7 @@ export default {
               {
                 label: "NeteaseUnblock(仅规则，No-Urltest)",
                 value:
-                  "https://raw.githubusercontent.com/AGWA5783/Rules/master/RemoteConfig/special/netease.ini"
+                  "https://raw.githubusercontent.com/CareyWang/Rules/master/RemoteConfig/special/netease.ini"
               }
             ]
           }
@@ -330,7 +337,7 @@ export default {
     document.title = "Subscription Converter";
   },
   mounted() {
-    this.form.clientType = "surge&ver=4";
+    this.form.clientType = "clashr";
     this.notify();
     this.getBackendVersion();
   },
