@@ -4,7 +4,7 @@
       <el-col>
         <el-card>
           <div slot="header">
-            Subscription Converter
+            Subscription Converter *此API由YToo提供后端服务支持 <el-button slot="append" @click="goToYToo" icon="el-icon-link">前往官网</el-button>
             <svg-icon icon-class="github" style="margin-left: 20px" @click="goToProject" />
 
             <div style="display: inline-block; position:absolute; right: 20px">{{ backendVersion }}</div>
@@ -210,6 +210,7 @@
 
 <script>
 const project = "https://github.com/CareyWang/sub-web";
+const YToo = "https://to-ytoo.xyz";
 const remoteConfigSample =
   "https://raw.githubusercontent.com/tindy2013/subconverter/master/base/config/example_external_config.ini";
 const gayhubRelease = "https://github.com/tindy2013/subconverter/releases";
@@ -342,6 +343,9 @@ export default {
     },
     goToProject() {
       window.open(project);
+    },
+    goToYToo() {
+      window.open(YToo);
     },
     gotoGayhub() {
       window.open(gayhubRelease);
